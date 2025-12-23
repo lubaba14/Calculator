@@ -5,6 +5,13 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach(button => { 
   button.addEventListener("click", () => { 
 
+    if (display.value === "Error") {
+      if (button.dataset.type === "clear") {
+        display.value = "0";
+        return;
+      }
+    }
+
     if (button.dataset.type === "clear") {
         display.value = "0";
         return;
