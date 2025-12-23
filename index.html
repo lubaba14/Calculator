@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="keywords" content="HTML, CSS">
+        <meta name="description" content="...">
+        <title>Calculator</title>
+        <style>
+            em{
+                color: pink;
+                font-style: normal;
+            }
+            .calculator {
+                position: relative;
+                padding: 18px;
+                border-radius: 20px;
+
+                background: rgba(255, 255, 255, 0.12); /* clear glass */
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                box-shadow: 0 25px 60px rgba(150, 110, 255, 0.25);
+
+                overflow: hidden;
+            }
+
+            .calculator > *{
+                position: relative;
+                z-index: 2;
+            }
+
+            .calculator::before {
+                content: "";
+                position: absolute;
+                inset: -50%;
+
+                background: linear-gradient(
+                    120deg,
+                    transparent 38%,
+                    rgba(255, 255, 255, 0.35) 46%,
+                    rgba(255, 255, 255, 0.15) 54%,
+                    transparent 62%
+                );
+
+                pointer-events: none;
+                
+            }
+
+            .calculator::after {
+                content: "";
+                position: absolute;
+                inset: -50%;
+
+                background: linear-gradient(
+                    120deg,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.6) 52%,
+                    rgba(255, 255, 255, 0.25) 54%,
+                    transparent 56%
+                );
+
+                pointer-events: none;
+            }
+
+            
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+
+                background:
+                    radial-gradient(circle at 15% 25%, #f6bdd5 0%, transparent 55%),
+                    radial-gradient(circle at 85% 75%, #c7b6ff 0%, transparent 55%),
+                    radial-gradient(circle at 50% 50%, #edb7ed 0%, #d9c8ff 100%);
+            }
+            .buttons {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+            .zero {
+                grid-column: span 2;
+            }
+            .equals {
+                grid-row: span 2;
+            }
+            button {
+                height: 50px;
+                font-size: 18px;
+
+                background-color: #bc91de;
+                color: white;
+                border: none;
+                border-radius: 10px;
+
+                /* THIS is the raise */
+                box-shadow: -3px 3px 0 #e1bef9;
+
+                cursor: pointer;
+            }
+
+            .display {
+                color: #b082cd;
+                width: 100%;
+                height: 60px;
+
+                margin-bottom: 15px;   
+                padding: 10px;
+
+                font-size: 24px;
+                text-align: right;
+
+                border: 1px solid #ccc;
+                border-radius: 6px;
+
+                box-sizing: border-box; 
+            }
+
+        </style>
+    </head>
+    <body>
+        
+        <div class="calculator">
+            <input id="display" class="display" value="0" readonly>
+            <div class="buttons">
+                <button data-type="clear">C</button>
+                <button data-type="op" data-op="÷">÷</button>
+                <button data-type="op" data-op="×">×</button>
+                <button data-type="delete">⌫</button>
+
+                <button data-type="number">7</button>
+                <button data-type="number">8</button>
+                <button data-type="number">9</button>
+                <button data-type="op" data-op="−">−</button>
+
+                <button data-type="number">4</button>
+                <button data-type="number">5</button>
+                <button data-type="number">6</button>
+                <button data-type="op" data-op="+">+</button>
+
+                <button data-type="number">1</button>
+                <button data-type="number">2</button>
+                <button data-type="number">3</button>
+                <button class="equals" data-type="equals">=</button>
+
+                <button class="zero" data-type="number">0</button>
+                <button data-type="dot">.</button>
+                
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
