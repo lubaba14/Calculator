@@ -5,12 +5,7 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach(button => { 
   button.addEventListener("click", () => { 
 
-    if (display.value === "Error") {
-      if (button.dataset.type === "clear") {
-        display.value = "0";
-        return;
-      }
-    }
+ 
 
     if (button.dataset.type === "clear") {
         display.value = "0";
@@ -77,7 +72,7 @@ buttons.forEach(button => {
         try {
           display.value = String(evaluate(display.value));
         } catch (e) {
-          display.value = "Error";
+          
         }
         return;
       }
@@ -94,9 +89,7 @@ function evaluate(expr) {
   
     // Evaluate
     const result = Function(`return (${jsExpr});`)();
-  
-    // Handle weird results
-    if (!Number.isFinite(result)) throw new Error("Bad math");
+
   
     return result;
   }
